@@ -1,11 +1,7 @@
 'use client'
 import React, {useEffect, useState} from 'react'
-import { useLocation } from 'react-router-dom'
-import { useNavigation } from 'react-router-dom'
 
-function Surveylist() {
-  const location = useLocation()
-  const [state, setLocationState] = useState({fullname, age, email, education, department, jobtitle, jobtype})
+function Surveylist({fullname, age, email, education, department, jobtitle, jobtype}) {
 
   useEffect(() => {
     let state = location.state
