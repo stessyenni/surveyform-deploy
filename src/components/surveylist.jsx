@@ -3,10 +3,7 @@ import React, {useEffect, useState} from 'react'
 
 function Surveylist({fullname, age, email, education, department, jobtitle, jobtype}) {
 
-  useEffect(() => {
-    let state = location.state
-    setLocationState(state)
-  }, [location.state])
+  const state = false;
   return (
     <div>
       <table>
