@@ -28,7 +28,7 @@ function Surveylist({fullname, age, email, education, department, jobtitle, jobt
              <td>{state.education}</td>
              <td>{state.department}</td>
              <td>{state.jobtitle}</td>
-             <td>{state.jobtype}</td>
+             {/* <td>{state.jobtype}</td> */}
            </tr>
            )}
         </tbody>
