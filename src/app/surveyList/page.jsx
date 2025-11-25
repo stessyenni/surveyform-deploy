@@ -1,11 +1,12 @@
 import React from 'react'
-import Surveylist from '@/components/surveylist'
+// import Surveylist from '@/components/surveylist'
+import SurveyForm from '@/components/surveyform'
 
 
 const Surveylistpage = () => {
   return (
     <div>
-       <Surveylist />
+      <SurveyForm />
     </div>
   )
 }
