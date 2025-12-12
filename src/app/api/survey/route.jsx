@@ -32,3 +32,18 @@ export async function POST(req) {
         } // To verify is there's an error from the Mongoose validation
     }
 }
+
+export async function GET() {
+  try {
+    await connectDB();
+    const Users = await Survey.find(); // Fetch all surveys, sorted by creation date (newest first)
+
+    return NextResponse.json({ success: true, data: Users }, { status: 200 });
+  } catch (error) {
+    console.log("Server error:", error);
+    return NextResponse.json(
+      { success: false, msg: [error.message || "Unknown error occured."] },
+      { status: 500 }
+    );
+  }
+}
