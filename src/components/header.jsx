@@ -2,7 +2,7 @@ import React from 'react'
 
 function Header () {
   return (
-    <div className='Header'>
+    <div className='Header flex flex-row gap-10 items-center justify-center'>
       <nav className='Menu'>
         <div>
           <ul>
