@@ -2,10 +2,10 @@ import React from 'react'
 
 function Header () {
   return (
-    <div className='Header flex flex-row gap-10 items-center justify-center'>
+    <div className='Header'>
       <nav className='Menu'>
         <div>
-          <ul>
+          <ul className='flex flex-row gap-10 items-center justify-center'>
             <li>
               <link href='/'> Survey Form
               </link>
