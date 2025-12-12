@@ -4,8 +4,8 @@ const Survey = () => {
   return (
     <div>
       <table>
-        <theead>
-
+        <thead>
+          
         </thead>
       </table>
     </div>
