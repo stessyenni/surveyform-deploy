@@ -6,7 +6,7 @@ function Header () {
     <div className="Header">
       <nav className="Menu">
         <div>
-          <ul className="flex flex-row gap-10 items-center justify-center">
+          <ul className="w-[50%] bg-amber-600 flex flex-row gap-10 items-center justify-center">
             <Link className=" hover:bg-amber-400" href="/">
               {" "}
               Survey Form

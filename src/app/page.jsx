@@ -7,5 +7,5 @@ export default function Homepage() {
     <div>
       <SurveyForm />
     </div>
-  )
+  );
 }

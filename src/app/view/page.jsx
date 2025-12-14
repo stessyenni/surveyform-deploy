@@ -1,71 +1,62 @@
-import React from 'react'
+import React from "react";
 
-const Survey = () => {
-
-const dummyData = [
-  {
-    fullname: "John Doe",
-    age: 28,
-    email: "johndoe@example.com",
-    education: "Bachelor's Degree",
-    department: "Marketing",
-    jobtitle: "Marketing Analyst",
-    jobtype: "Full-Time",
-  },
-  {
-    fullname: "Sarah Kim",
-    age: 34,
-    email: "sarah.kim@example.com",
-    education: "Master's Degree",
-    department: "Human Resources",
-    jobtitle: "HR Manager",
-    jobtype: "Part-Time",
-  },
-  {
-    fullname: "Michael Smith",
-    age: 41,
-    email: "michael.smith@example.com",
-    education: "PhD",
-    department: "Research & Development",
-    jobtitle: "Lead Researcher",
-    jobtype: "Contract",
-  },
-];
-
-return (
-  <div className="overflow-x-auto max-w-7xl mx-auto mt-10 p-4">
-    <table className="min-w-full border border-gray-300 rounded-lg shadow-md text-sm">
-      <thead className="bg-gray-100 text-gray-700">
-        <tr>
-          <th className="px-4 py-2 border">Full Name</th>
-          <th className="px-4 py-2 border">Age</th>
-          <th className="px-4 py-2 border">Email</th>
-          <th className="px-4 py-2 border">Education</th>
-          <th className="px-4 py-2 border">Department</th>
-          <th className="px-4 py-2 border">Job Title</th>
-          <th className="px-4 py-2 border">Job Type</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {dummyData.map((data, index) => (
-          <tr
-            key={index}
-            className="border hover:bg-gray-50 even:bg-gray-50 transition"
-          >
-            <td className="px-4 py-2 border">{data.fullname}</td>
-            <td className="px-4 py-2 border">{data.age}</td>
-            <td className="px-4 py-2 border">{data.email}</td>
-            <td className="px-4 py-2 border">{data.education}</td>
-            <td className="px-4 py-2 border">{data.department}</td>
-            <td className="px-4 py-2 border">{data.jobtitle}</td>
-            <td className="px-4 py-2 border">{data.jobtype}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+async function getUsers() {
+  try {
+    const response = await fetch("http://localhost:3000/api/survey", {
+      cache: "no-store",
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { success: false, msg: [error.message || "Unknown error occured."] };
+  }
 }
 
-export default Survey
+export default async function Survey() {
+  const allUsers = await getUsers();
+
+  if (!allUsers?.success === true) {
+    return (
+      <div className="text-center mt-10 text-red-500">
+        Failed to load survey data
+      </div>
+    );
+  }
+  const users = allUsers.data;
+  return (
+    <div className="overflow-x-auto max-w-7xl mx-auto mt-10 p-4">
+      <table className="min-w-full border border-gray-300 rounded-lg shadow-md text-sm">
+        <thead className="bg-gray-100 text-gray-700">
+          <tr>
+            <th className="px-4 py-2 border">S1.No</th>
+            <th className="px-4 py-2 border">Full Name</th>
+            <th className="px-4 py-2 border">Age</th>
+            <th className="px-4 py-2 border">Email</th>
+            <th className="px-4 py-2 border">Education</th>
+            <th className="px-4 py-2 border">Department</th>
+            <th className="px-4 py-2 border">Job Title</th>
+            <th className="px-4 py-2 border">Job Type</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {users.map((item, index) => (
+            <tr
+              key={item._id}
+              className="border hover:bg-gray-50 even:bg-gray-50 transition"
+            >
+              <td className="px-4 py-2 border">{index + 1}.</td>
+              <td className="px-4 py-2 border">{item.fullname}</td>
+              <td className="px-4 py-2 border">{item.age}</td>
+              <td className="px-4 py-2 border">{item.email}</td>
+              <td className="px-4 py-2 border">{item.education}</td>
+              <td className="px-4 py-2 border">{item.department}</td>
+              <td className="px-4 py-2 border">{item.jobtitle}</td>
+              <td className="px-4 py-2 border">{item.jobtype}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
