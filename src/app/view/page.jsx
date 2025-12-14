@@ -2,9 +2,12 @@ import React from "react";
 
 async function getUsers() {
   try {
-    const response = await fetch("/api/survey", {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      "https://surveyform-deploy.vercel.app/api/survey",
+      {
+        cache: "no-store",
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
