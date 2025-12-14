@@ -2,7 +2,7 @@ import React from "react";
 
 async function getUsers() {
   try {
-    const response = await fetch("http://localhost:3000/api/survey", {
+    const response = await fetch("/api/survey", {
       cache: "no-store",
     });
     const data = await response.json();

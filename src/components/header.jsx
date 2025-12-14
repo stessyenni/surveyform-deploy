@@ -6,13 +6,19 @@ function Header () {
     <div className="Header">
       <nav className="Menu">
         <div>
-          <ul className="w-[50%] bg-amber-600 flex flex-row gap-10 items-center justify-center">
-            <Link className=" hover:bg-amber-400" href="/">
+          <ul className="w-full  text-white font-bold text-[17px] flex flex-row gap-10 items-center justify-center">
+            <Link
+              className="border-2 bg-[#ea5535] p-2 rounded-lg hover:bg-[#3c357c]"
+              href="/"
+            >
               {" "}
               Survey Form
             </Link>
 
-            <Link className=" hover:bg-amber-400" href="/view">
+            <Link
+              className="border-2 bg-[#ea5535] p-2 rounded-lg hover:bg-[#3c357c]"
+              href="/view"
+            >
               {" "}
               Survey List
             </Link>
